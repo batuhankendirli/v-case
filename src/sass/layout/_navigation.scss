@@ -1,0 +1,25 @@
+.navigation {
+  padding: 3rem 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba($color: $color-border-primary, $alpha: 0.11);
+
+  &-logo {
+  }
+
+  &-arrow {
+    position: absolute;
+    top: 50%;
+    left: 4rem;
+    display: flex;
+    transform: translate(0, -50%);
+    transition: all 0.2s ease;
+
+    &:hover {
+      cursor: pointer;
+      transform: translate(-0.4rem, -50%);
+    }
+  }
+}

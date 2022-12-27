@@ -1,0 +1,55 @@
+.location-card {
+  background-color: $color-bg-secondary;
+  border-radius: 1.5rem;
+  padding: 1.7rem 2.5rem;
+  color: $color-text-secondary;
+
+  &-title {
+    font-weight: 500;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+
+  &-wrapper {
+    display: flex;
+    gap: 3.2rem;
+
+    &-left {
+      &-text {
+        font-weight: 400;
+        white-space: nowrap;
+      }
+    }
+
+    &-right {
+      &-text {
+        font-weight: 500;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+
+  &-skeleton {
+    background-color: $color-bg-tertiary;
+    border-radius: 1.5rem;
+    padding: 1.7rem 2.5rem;
+
+    &-title {
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    &-texts {
+      display: grid;
+      height: 100%;
+      grid-template-columns: 30% 65%;
+      gap: 5%;
+    }
+  }
+}
