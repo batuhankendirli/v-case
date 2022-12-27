@@ -1,0 +1,38 @@
+// MEDIA QUERY MANAGER
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone-mini {
+    // 28.125 * 16 = 450px
+    @media only screen and (max-width: 28.125em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == phone {
+    // 37.5 * 16 = 600px
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-port {
+    // 56.25 * 16 = 900px
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-land {
+    // 75 * 16 = 1200px
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == big-desktop {
+    // 112.5 * 16 = 1800px
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
