@@ -1,0 +1,45 @@
+.character-card {
+  justify-self: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &-img {
+    width: 100%;
+    border-radius: 1.5rem;
+  }
+
+  &-name {
+    font-weight: 600;
+  }
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    &-dot {
+      height: 1.6rem;
+      width: 1.6rem;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    &-text {
+      font-weight: 500;
+    }
+  }
+
+  &-skeleton {
+    width: 100%;
+    &-img {
+      border-radius: 1rem;
+      aspect-ratio: 1 / 1;
+      margin-bottom: 1.8rem;
+    }
+    &-text {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 16px 0.5fr;
+    }
+  }
+}

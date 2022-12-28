@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Context } from '../Context';
 
 const Pagination = ({ currentPage, totalPage }) => {
-  const { setActiveLocationPage } = useContext(Context);
+  const { setActivePage } = useContext(Context);
 
   let pageArr = [1, 2, 3, 4, 5, '\u00B7\u00B7\u00B7', totalPage];
 
@@ -26,18 +26,18 @@ const Pagination = ({ currentPage, totalPage }) => {
       totalPage - 1,
       totalPage,
     ];
-  } else if (totalPage < 8) {
+  } else if (totalPage <= 8) {
     pageArr = Array.from(Array(totalPage), (e, i) => i + 1);
   }
 
   const handlePageClick = (pageNum, index) => {
     if (pageNum !== '\u00B7\u00B7\u00B7') {
-      setActiveLocationPage(pageNum);
+      setActivePage(pageNum);
     } else {
       if (pageArr.length / 2 > index) {
-        setActiveLocationPage(pageArr[index + 1] - 1);
+        setActivePage(pageArr[index + 1] - 1);
       } else {
-        setActiveLocationPage(pageArr[index - 1] + 1);
+        setActivePage(pageArr[index - 1] + 1);
       }
     }
 
@@ -51,7 +51,7 @@ const Pagination = ({ currentPage, totalPage }) => {
         className="pagination-button"
         disabled={currentPage === 1}
         onClick={() => (
-          setActiveLocationPage(currentPage - 1),
+          setActivePage(currentPage - 1),
           (document.body.scrollTop = 0),
           (document.documentElement.scrollTop = 0)
         )}
@@ -78,7 +78,7 @@ const Pagination = ({ currentPage, totalPage }) => {
         className="pagination-button"
         disabled={currentPage === totalPage}
         onClick={() => (
-          setActiveLocationPage(currentPage + 1),
+          setActivePage(currentPage + 1),
           (document.body.scrollTop = 0),
           (document.documentElement.scrollTop = 0)
         )}

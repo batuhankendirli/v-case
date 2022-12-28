@@ -1,0 +1,180 @@
+.color-alive {
+  background-color: $color-btn-alive;
+}
+
+.color-dead {
+  background-color: $color-btn-dead;
+  &:disabled {
+    background-color: rgba($color: $color-btn-dead, $alpha: 0.25);
+  }
+}
+
+.color-unknown {
+  background-color: $color-btn-unknown;
+  &:disabled {
+    background-color: rgba($color: $color-btn-unknown, $alpha: 0.25);
+  }
+}
+
+.btn-alive {
+  background-color: transparent;
+  border: 1px solid rgba($color: $color-btn-alive, $alpha: 0.5);
+  cursor: pointer;
+  transition: all 0.25s;
+
+  & span {
+    background-color: rgba($color: $color-btn-alive, $alpha: 0.25);
+    transition: all 0.25s;
+  }
+
+  &:hover {
+    background-color: rgba($color: $color-btn-alive, $alpha: 0.2);
+
+    & span {
+      background-color: rgba($color: $color-btn-alive, $alpha: 1);
+    }
+  }
+
+  &.active:hover {
+    background-color: rgba($color: $color-btn-alive, $alpha: 0.2);
+
+    & span {
+      background-color: rgba($color: $color-btn-alive, $alpha: 1);
+    }
+  }
+
+  &:active {
+    background-color: rgba($color: $color-btn-alive, $alpha: 0.5);
+  }
+
+  &.active:active {
+    background-color: rgba($color: $color-btn-alive, $alpha: 0.5);
+  }
+
+  &:disabled {
+    color: rgba($color: $color-text-primary, $alpha: 0.3);
+
+    border-color: rgba($color: $color-btn-alive, $alpha: 0.3);
+    background-color: transparent;
+    cursor: auto;
+  }
+  &:disabled span {
+    background-color: rgba($color: $color-btn-alive, $alpha: 0.2);
+  }
+
+  &.active {
+    background-color: rgba($color: $color-btn-alive, $alpha: 0.05);
+    border-color: rgba($color: $color-btn-alive, $alpha: 1);
+
+    & span {
+      background-color: rgba($color: $color-btn-alive, $alpha: 1);
+    }
+  }
+}
+
+.btn-dead {
+  background-color: transparent;
+  border: 1px solid rgba($color: $color-btn-dead, $alpha: 0.5);
+  cursor: pointer;
+  transition: all 0.25s;
+
+  & span {
+    background-color: rgba($color: $color-btn-dead, $alpha: 0.25);
+    transition: all 0.25s;
+  }
+
+  &:hover {
+    background-color: rgba($color: $color-btn-dead, $alpha: 0.2);
+    & span {
+      background-color: rgba($color: $color-btn-dead, $alpha: 1);
+    }
+  }
+
+  &.active:hover {
+    background-color: rgba($color: $color-btn-dead, $alpha: 0.2);
+    & span {
+      background-color: rgba($color: $color-btn-dead, $alpha: 1);
+    }
+  }
+
+  &:active {
+    background-color: rgba($color: $color-btn-dead, $alpha: 0.5);
+  }
+
+  &.active:active {
+    background-color: rgba($color: $color-btn-dead, $alpha: 0.5);
+  }
+
+  &:disabled {
+    color: rgba($color: $color-text-primary, $alpha: 0.3);
+
+    border-color: rgba($color: $color-btn-dead, $alpha: 0.3);
+    background-color: transparent;
+    cursor: auto;
+  }
+  &:disabled span {
+    background-color: rgba($color: $color-btn-dead, $alpha: 0.2);
+  }
+
+  &.active {
+    background-color: rgba($color: $color-btn-dead, $alpha: 0.05);
+    border-color: rgba($color: $color-btn-dead, $alpha: 1);
+
+    & span {
+      background-color: rgba($color: $color-btn-dead, $alpha: 1);
+    }
+  }
+}
+
+.btn-unknown {
+  background-color: transparent;
+  border: 1px solid rgba($color: $color-btn-unknown, $alpha: 0.5);
+  cursor: pointer;
+  transition: all 0.25ss;
+
+  & span {
+    background-color: rgba($color: $color-btn-unknown, $alpha: 0.25);
+    transition: all 0.25ss;
+  }
+
+  &:hover {
+    background-color: rgba($color: $color-btn-unknown, $alpha: 0.2);
+    & span {
+      background-color: rgba($color: $color-btn-unknown, $alpha: 1);
+    }
+  }
+
+  &.active:hover {
+    background-color: rgba($color: $color-btn-unknown, $alpha: 0.2);
+    & span {
+      background-color: rgba($color: $color-btn-unknown, $alpha: 1);
+    }
+  }
+
+  &:active {
+    background-color: rgba($color: $color-btn-unknown, $alpha: 0.5);
+  }
+
+  &.active:active {
+    background-color: rgba($color: $color-btn-unknown, $alpha: 0.5);
+  }
+
+  &:disabled {
+    color: rgba($color: $color-text-primary, $alpha: 0.3);
+    border-color: rgba($color: $color-btn-unknown, $alpha: 0.3);
+    background-color: transparent;
+    cursor: auto;
+  }
+  &:disabled span {
+    background-color: rgba($color: $color-btn-unknown, $alpha: 0.2);
+  }
+
+  &.active {
+    background-color: rgba($color: $color-btn-unknown, $alpha: 0.05);
+    border-color: rgba($color: $color-btn-unknown, $alpha: 1);
+
+    & span {
+      background-color: rgba($color: $color-btn-unknown, $alpha: 1);
+    }
+  }
+}

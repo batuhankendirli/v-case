@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { Context } from '../Context';
 
 const LocationCard = ({ id, name, type, dimension, residentCount }) => {
-  const handleClick = () => {
-    console.log(id);
-  };
+  const { setActivePage } = useContext(Context);
 
   return (
-    <div className="location-card" onClick={handleClick}>
+    <Link
+      to={`/location/${id}`}
+      className="location-card"
+      onClick={() => setActivePage(1)}
+    >
       <h2 className="location-card-title">{name}</h2>
 
       <div className="location-card-wrapper">
@@ -25,7 +29,7 @@ const LocationCard = ({ id, name, type, dimension, residentCount }) => {
           </h4>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

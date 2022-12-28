@@ -5,8 +5,12 @@
 @import 'base/typography';
 @import 'base/utilities';
 
+@import 'components/character-card';
 @import 'components/location-card';
+@import 'components/no-result';
 @import 'components/pagination';
+
 @import 'layout/navigation';
 
+@import 'pages/characters-page';
 @import 'pages/location-page';

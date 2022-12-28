@@ -6,9 +6,9 @@ import { useContext } from 'react';
 import LocationSkeleton from '../components/LocationSkeleton';
 
 const LocationPage = () => {
-  const { activeLocationPage } = useContext(Context);
+  const { activePage } = useContext(Context);
   const { data: locationData, loading } = useFetch(
-    `${import.meta.env.VITE_LOCATION_API}?page=${activeLocationPage}`
+    `${import.meta.env.VITE_LOCATION_API}?page=${activePage}`
   );
 
   return (
@@ -16,7 +16,7 @@ const LocationPage = () => {
       <div className="location-wrapper">
         {loading ? (
           <LocationSkeleton
-            cards={activeLocationPage === locationData?.info?.pages ? 9 : 20}
+            cards={activePage === locationData?.info?.pages ? 9 : 20}
           />
         ) : (
           <>
@@ -34,7 +34,7 @@ const LocationPage = () => {
         )}
       </div>
       <Pagination
-        currentPage={activeLocationPage}
+        currentPage={activePage}
         totalPage={locationData?.info?.pages}
       />
     </div>

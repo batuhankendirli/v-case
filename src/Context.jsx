@@ -1,13 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react';
 const Context = createContext();
 
-const ContextProvider = ({children}) => {
-  const [activeLocationPage, setActiveLocationPage] = useState(1)
+const ContextProvider = ({ children }) => {
+  const [activePage, setActivePage] = useState(1);
   return (
-    <Context.Provider value={{activeLocationPage,setActiveLocationPage}}>
+    <Context.Provider value={{ activePage, setActivePage }}>
       {children}
     </Context.Provider>
   );
 };
 
-export { Context, ContextProvider};
+export { Context, ContextProvider };
