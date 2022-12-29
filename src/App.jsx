@@ -1,10 +1,10 @@
 import Navigation from './components/Navigation';
 import LocationPage from './pages/LocationPage';
 import CharactersPage from './pages/CharactersPage';
+import CharacterDetailsPage from './pages/CharacterDetailsPage';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { Routes, Route } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 function App() {
   const { pathname } = useLocation();
@@ -16,6 +16,10 @@ function App() {
         <Routes>
           <Route path="/" element={<LocationPage />} />
           <Route path="/location/:locationId" element={<CharactersPage />} />
+          <Route
+            path="/location/:locationId/character/:characterId"
+            element={<CharacterDetailsPage />}
+          />
         </Routes>
       </SkeletonTheme>
     </div>

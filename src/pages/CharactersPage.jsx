@@ -11,60 +11,52 @@ import NoResult from '../components/NoResult';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 const CharactersPage = () => {
-  const [characters, setCharacters] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [activeFilter, setActiveFilter] = useState({
     alive: false,
     dead: false,
     unknown: false,
   });
+  const [normalizedData, setNormalizedData] = useState([]);
   const { locationId } = useParams();
-  const { activePage } = useContext(Context);
+  const { activePage, setActivePage } = useContext(Context);
   const [filtered, setFiltered] = useState([]);
+  const [paginatedArr, setPaginatedArr] = useState([]);
   const [parent] = useAutoAnimate();
-
-  const { data: allCharacters } = useFetch(
+  const { data: locationData } = useFetch(
     `${import.meta.env.VITE_LOCATION_API}/${locationId}`
   );
-
-  const paginatedArr = paginateArray(
-    allCharacters?.residents,
-    import.meta.env.VITE_CHARACTERS_PER_PAGE
-  );
-  const getAllCharacters = async (pageNum) => {
-    setLoading(true);
-    let promises = [];
-    paginatedArr?.[pageNum - 1]?.map((character) => {
-      promises.push(fetch(character).then((response) => response.json()));
-    });
-
-    await Promise.all(promises).then((data) => {
-      setCharacters(data);
-      setFiltered(data);
-      setActiveFilter({
-        alive: data.some((character) => character.status === 'Alive'),
-        dead: data.some((character) => character.status === 'Dead'),
-        unknown: data.some((character) => character.status === 'unknown'),
-      });
-      setLoading(false);
-    });
-  };
+  const lastIndexOfSlash = import.meta.env.VITE_CHARACTER_API.length;
+  const [allIDs, setAllIDs] = useState('');
 
   useEffect(() => {
-    setFiltered([]);
-    getAllCharacters(activePage);
-  }, [allCharacters, activePage]);
+    setAllIDs(
+      locationData?.residents
+        ?.map((character) => character.slice(lastIndexOfSlash))
+        .join(',')
+    );
+  }, [locationData]);
 
-  const handleFiltering = (btn) => {
-    setActiveFilter((prev) => ({
-      ...prev,
-      [btn]: !prev[btn],
-    }));
-  };
+  const { data: characterData, loading } = useFetch(
+    `${import.meta.env.VITE_CHARACTER_API}${allIDs}`
+  );
+
+  useEffect(() => {
+    if (allIDs?.length === 0) {
+      setNormalizedData([]);
+    } else if (
+      !Array.isArray(characterData) &&
+      typeof characterData === 'object' &&
+      characterData !== null
+    ) {
+      setNormalizedData([characterData]);
+    } else {
+      setNormalizedData(characterData);
+    }
+  }, [characterData]);
 
   useEffect(() => {
     setFiltered(
-      characters.filter(
+      normalizedData.filter(
         (character) =>
           (activeFilter.alive && character.status === 'Alive') ||
           (activeFilter.dead && character.status === 'Dead') ||
@@ -72,6 +64,31 @@ const CharactersPage = () => {
       )
     );
   }, [activeFilter]);
+
+  useEffect(() => {
+    setFiltered(normalizedData);
+    setActiveFilter({
+      alive: normalizedData.some((character) => character.status === 'Alive'),
+      dead: normalizedData.some((character) => character.status === 'Dead'),
+      unknown: normalizedData.some(
+        (character) => character.status === 'unknown'
+      ),
+    });
+  }, [normalizedData]);
+
+  const handleFiltering = (btn) => {
+    setActivePage(1);
+    setActiveFilter((prev) => ({
+      ...prev,
+      [btn]: !prev[btn],
+    }));
+  };
+
+  useEffect(() => {
+    setPaginatedArr(
+      paginateArray(filtered, import.meta.env.VITE_CHARACTERS_PER_PAGE)
+    );
+  }, [filtered]);
 
   return (
     <div className="characters">
@@ -84,7 +101,7 @@ const CharactersPage = () => {
                 activeFilter.dead ? 'active' : ''
               }`}
               disabled={
-                !characters.some((character) => character.status === 'Dead')
+                !normalizedData.some((character) => character.status === 'Dead')
               }
               onClick={() => handleFiltering('dead')}
             >
@@ -96,7 +113,9 @@ const CharactersPage = () => {
                 activeFilter.alive ? 'active' : ''
               }`}
               disabled={
-                !characters.some((character) => character.status === 'Alive')
+                !normalizedData.some(
+                  (character) => character.status === 'Alive'
+                )
               }
               onClick={() => handleFiltering('alive')}
             >
@@ -109,7 +128,9 @@ const CharactersPage = () => {
                 activeFilter.unknown ? 'active' : ''
               }`}
               disabled={
-                !characters.some((character) => character.status === 'unknown')
+                !normalizedData.some(
+                  (character) => character.status === 'unknown'
+                )
               }
               onClick={() => handleFiltering('unknown')}
             >
@@ -124,13 +145,14 @@ const CharactersPage = () => {
             <Skeleton className="characters-buttons-skeleton-item" />
           </div>
         )}
+
         <div className="characters-wrapper" ref={parent}>
           {loading && (
             <CharacterSkeleton
               cards={Number(import.meta.env.VITE_CHARACTERS_PER_PAGE)}
             />
           )}
-          {filtered.map((character) => (
+          {paginatedArr[activePage - 1]?.map((character) => (
             <CharacterCard
               key={character.id}
               id={character.id}

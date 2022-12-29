@@ -1,8 +1,9 @@
-import React from 'react';
+import { Link,useParams } from 'react-router-dom';
 
 const CharacterCard = ({ id, name, img, status, specie }) => {
+  const {locationId} = useParams();
   return (
-    <div className="character-card">
+    <Link to={`/location/${locationId}/character/${id}`} className="character-card">
       <div
         style={{
           aspectRatio: '1 / 1',
@@ -31,7 +32,7 @@ const CharacterCard = ({ id, name, img, status, specie }) => {
           {status} - {specie}
         </h3>
       </div>
-    </div>
+    </Link>
   );
 };
 
