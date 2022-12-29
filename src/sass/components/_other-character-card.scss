@@ -1,0 +1,46 @@
+.other-card {
+  display: flex;
+  gap: 1.4rem;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 1.65rem;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background-color: rgba($color: $color-bg-tertiary, $alpha: 0.5);
+  }
+  &-img {
+    height: 9rem;
+    width: 9rem;
+    border-radius: 1.5rem;
+  }
+
+  &-texts {
+    color: $color-text-secondary;
+    &-name {
+      font-weight: 600;
+    }
+    &-origin {
+      font-weight: 400;
+    }
+    &-type {
+      font-weight: 300;
+    }
+  }
+
+  &-skeleton {
+    display: grid;
+    grid-template-columns: 9rem 0.75fr;
+    gap: 1.5rem;
+  }
+}
+
+.main-card-skeleton {
+  width: 55rem;
+  &-img {
+    border-radius: 1.5rem;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 2rem;
+  }
+}

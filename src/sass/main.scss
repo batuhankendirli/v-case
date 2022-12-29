@@ -8,9 +8,11 @@
 @import 'components/character-card';
 @import 'components/location-card';
 @import 'components/no-result';
+@import 'components/other-character-card';
 @import 'components/pagination';
 
 @import 'layout/navigation';
 
+@import 'pages/character-details-page';
 @import 'pages/characters-page';
 @import 'pages/location-page';

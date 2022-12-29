@@ -1,18 +1,31 @@
-import { Link,useParams } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { Context } from '../Context';
 
 const CharacterCard = ({ id, name, img, status, specie }) => {
-  const {locationId} = useParams();
+  const { setActivePage } = useContext(Context);
+
+  const handleClick = () => {
+    setActivePage(1);
+  };
+
+  const { locationId } = useParams();
   return (
-    <Link to={`/location/${locationId}/character/${id}`} className="character-card">
+    <Link
+      to={`/location/${locationId}/character/${id}`}
+      className="character-card"
+      onClick={handleClick}
+    >
       <div
         style={{
+          width: '100%',
           aspectRatio: '1 / 1',
           marginBottom: '1.2rem',
           display: 'flex',
         }}
       >
         <img
-          src={img || ''}
+          src={img}
           alt={`Image of ${name}`}
           className="character-card-img"
         />

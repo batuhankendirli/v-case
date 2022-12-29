@@ -1,0 +1,67 @@
+.details {
+  padding: 4rem;
+  padding-bottom: 7rem;
+}
+
+.character-details {
+  display: flex;
+  gap: 5rem;
+  margin-bottom: 7rem;
+
+  &-main {
+    width: 55rem;
+    &-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 1.5rem;
+      margin-bottom: 1.6rem;
+    }
+
+    &-name {
+      font-weight: 600;
+    }
+
+    &-texts {
+      display: flex;
+      justify-content: space-between;
+      &-left {
+        &-status {
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          margin-bottom: 0.4rem;
+          &-dot {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 50%;
+            display: inline-block;
+          }
+        }
+        &-origin {
+          font-weight: 400;
+        }
+      }
+      &-type {
+        color: $color-text-tertiary;
+        font-weight: 300;
+      }
+    }
+  }
+
+  &-other {
+    flex: 1;
+    position: relative;
+    &-heading {
+      font-weight: 600;
+      color: $color-text-secondary;
+      margin-bottom: 0.8rem;
+    }
+
+    &-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+}

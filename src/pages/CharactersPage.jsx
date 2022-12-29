@@ -166,7 +166,7 @@ const CharactersPage = () => {
         {!activeFilter.alive &&
           !activeFilter.dead &&
           !activeFilter.unknown &&
-          !loading && <NoResult />}
+          !loading && <NoResult text="Sorry, we couldn't find any results." />}
       </div>
       {paginatedArr.length > 1 && (
         <Pagination currentPage={activePage} totalPage={paginatedArr.length} />
