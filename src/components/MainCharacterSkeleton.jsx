@@ -5,11 +5,7 @@ const MainCharacterSkeleton = () => {
     <div className="main-card-skeleton">
       <Skeleton className="main-card-skeleton-img" />
       <h1>
-        <Skeleton
-          borderRadius={'.6rem'}
-          style={{ marginBottom: '.6rem' }}
-          width="20rem"
-        />
+        <Skeleton className="main-card-skeleton-name" />
       </h1>
       <div
         className="character-card-skeleton-text"
@@ -23,7 +19,7 @@ const MainCharacterSkeleton = () => {
         </h4>
       </div>
       <h4>
-        <Skeleton borderRadius={'.5rem'} width="15rem" />
+        <Skeleton borderRadius={'.5rem'} className="main-card-skeleton-text" />
       </h4>
     </div>
   );

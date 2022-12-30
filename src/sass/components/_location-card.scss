@@ -5,6 +5,10 @@
   color: $color-text-secondary;
   text-decoration: none;
 
+  @include respond(phone) {
+    padding: 1.8rem 1.4rem;
+  }
+
   &-title {
     font-weight: 500;
     margin-bottom: 1rem;

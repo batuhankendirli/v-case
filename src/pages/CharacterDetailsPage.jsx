@@ -147,7 +147,11 @@ const CharacterDetailsPage = () => {
           </div>
         )}
         <div className="character-details-other">
-          <h1 className="character-details-other-heading">Other Characters</h1>
+          {paginatedData[0]?.length && (
+            <h1 className="character-details-other-heading">
+              Other Characters
+            </h1>
+          )}
           <div className="character-details-other-wrapper" ref={parent}>
             {loading && (
               <OtherCharacterSkeleton

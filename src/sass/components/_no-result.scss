@@ -7,5 +7,9 @@
   &-text {
     text-align: center;
     white-space: nowrap;
+
+    @include respond(phone) {
+      white-space: normal;
+    }
   }
 }

@@ -1,6 +1,15 @@
 .details {
   padding: 4rem;
   padding-bottom: 7rem;
+
+  @include respond(tab-land) {
+    padding: 2.4rem;
+  }
+
+  @include respond(phone) {
+    padding: 1.5rem;
+    padding-bottom: 3rem;
+  }
 }
 
 .character-details {
@@ -8,8 +17,23 @@
   gap: 5rem;
   margin-bottom: 7rem;
 
+  @include respond(tab-land) {
+    gap: 2.4rem;
+  }
+
+  @include respond(tab-port) {
+    gap: 5rem;
+    flex-direction: column;
+    margin-bottom: 3rem;
+  }
+
   &-main {
     width: 55rem;
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
     &-img {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -31,6 +55,7 @@
           align-items: center;
           gap: 0.6rem;
           margin-bottom: 0.4rem;
+          white-space: nowrap;
           &-dot {
             width: 1.6rem;
             height: 1.6rem;
@@ -40,11 +65,21 @@
         }
         &-origin {
           font-weight: 400;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
         }
       }
       &-type {
         color: $color-text-tertiary;
         font-weight: 300;
+        & i {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+        }
       }
     }
   }
@@ -52,6 +87,7 @@
   &-other {
     flex: 1;
     position: relative;
+    min-height: 25vh;
     &-heading {
       font-weight: 600;
       color: $color-text-secondary;
@@ -62,6 +98,10 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
+
+      @include respond(phone) {
+        grid-template-columns: 1fr;
+      }
     }
   }
 }

@@ -6,11 +6,30 @@
   flex-direction: column;
   justify-content: space-between;
 
+  @include respond(phone) {
+    padding: 1.5rem;
+    padding-bottom: 3rem;
+  }
+
   &-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
     row-gap: 2rem;
     column-gap: 5rem;
+    align-content: space-between;
     margin-bottom: 7rem;
+
+    @include respond(tab-land) {
+      grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+    }
+    @include respond(tab-port) {
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+      column-gap: 3.2rem;
+    }
+
+    @include respond(phone) {
+      grid-template-columns: 1fr;
+      margin-bottom: 3rem;
+    }
   }
 }
