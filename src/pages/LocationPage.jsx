@@ -33,10 +33,12 @@ const LocationPage = () => {
           </>
         )}
       </div>
-      <Pagination
-        currentPage={activePage}
-        totalPage={locationData?.info?.pages}
-      />
+      {!loading && (
+        <Pagination
+          currentPage={activePage}
+          totalPage={locationData?.info?.pages}
+        />
+      )}
     </div>
   );
 };
