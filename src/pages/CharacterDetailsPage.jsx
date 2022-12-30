@@ -9,6 +9,7 @@ import OtherCharacterSkeleton from '../components/OtherCharacterSkeleton';
 import MainCharacterSkeleton from '../components/MainCharacterSkeleton';
 import NoResult from '../components/NoResult';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
+import Skeleton from 'react-loading-skeleton';
 
 const CharacterDetailsPage = () => {
   const { characterId, locationId } = useParams();
@@ -74,19 +75,26 @@ const CharacterDetailsPage = () => {
           <MainCharacterSkeleton />
         ) : (
           <div className="character-details-main">
-            <img
-              src={
-                normalizedData.find(
-                  (character) => character.id === Number(characterId)
-                )?.image
-              }
-              alt={`Image of ${
-                normalizedData.find(
-                  (character) => character.id === Number(characterId)
-                )?.name
-              }`}
-              className="character-details-main-img"
-            />
+            <div
+              style={{
+                width: '100%',
+                aspectRatio: '1 / 1',
+              }}
+            >
+              <img
+                src={
+                  normalizedData.find(
+                    (character) => character.id === Number(characterId)
+                  )?.image
+                }
+                alt={`Image of ${
+                  normalizedData.find(
+                    (character) => character.id === Number(characterId)
+                  )?.name
+                }`}
+                className="character-details-main-img"
+              />
+            </div>
             <h1 className="character-details-main-name">
               {
                 normalizedData.find(
@@ -152,6 +160,12 @@ const CharacterDetailsPage = () => {
               Other Characters
             </h1>
           )}
+          {loading && (
+            <h1>
+              <Skeleton borderRadius={'5px'} width="20rem" />
+            </h1>
+          )}
+
           <div className="character-details-other-wrapper" ref={parent}>
             {loading && (
               <OtherCharacterSkeleton

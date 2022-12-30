@@ -99,14 +99,25 @@
       margin-bottom: 4rem;
       width: max-content;
 
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
       @include respond(phone) {
         margin-bottom: 2.8rem;
+        gap: 1rem;
+        overflow-x: auto;
+        width: 100%;
       }
 
       &-item {
         width: 120px;
         height: 40px;
         border-radius: 50px;
+
+        @include respond(phone) {
+          min-width: 14rem;
+        }
       }
     }
   }
