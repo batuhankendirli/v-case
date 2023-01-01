@@ -47,7 +47,7 @@ const Pagination = ({ currentPage, totalPage, mobileSlide }) => {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
     // Resets mobile slider
-    mobileSlide.scrollTo({
+    mobileSlide?.scrollTo({
       top: 0,
       left: 0,
       behavior: 'smooth',
