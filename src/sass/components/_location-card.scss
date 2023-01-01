@@ -5,6 +5,11 @@
   color: $color-text-secondary;
   text-decoration: none;
   height: 13rem;
+  transition: all 0.25s;
+  &:hover,
+  &:active {
+    background-color: $color-bg-secondary-hover;
+  }
 
   @include respond(phone) {
     padding: 1.8rem 1.4rem;
