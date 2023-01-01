@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Context } from '../Context';
 
-const Pagination = ({ currentPage, totalPage }) => {
+const Pagination = ({ currentPage, totalPage, mobileSlide }) => {
   const { setActivePage } = useContext(Context);
 
   let pageArr = [1, 2, 3, 4, 5, '\u00B7\u00B7\u00B7', totalPage];
@@ -45,6 +45,13 @@ const Pagination = ({ currentPage, totalPage }) => {
     // On every page change, go to the top of the page.
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+    // Resets mobile slider
+    mobileSlide.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (

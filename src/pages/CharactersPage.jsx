@@ -94,6 +94,13 @@ const CharactersPage = () => {
       ...prev,
       [btn]: !prev[btn],
     }));
+
+    // Resets mobile slider
+    parent.current.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   };
 
   useEffect(() => {
@@ -181,7 +188,11 @@ const CharactersPage = () => {
           !loading && <NoResult text="Sorry, we couldn't find any results." />}
       </div>
       {paginatedArr.length > 1 && (
-        <Pagination currentPage={activePage} totalPage={paginatedArr.length} />
+        <Pagination
+          currentPage={activePage}
+          totalPage={paginatedArr.length}
+          mobileSlide={parent.current}
+        />
       )}
     </div>
   );
