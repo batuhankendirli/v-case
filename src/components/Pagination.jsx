@@ -34,6 +34,7 @@ const Pagination = ({ currentPage, totalPage }) => {
     if (pageNum !== '\u00B7\u00B7\u00B7') {
       setActivePage(pageNum);
     } else {
+      // If '...' is clicked...
       if (pageArr.length / 2 > index) {
         setActivePage(pageArr[index + 1] - 1);
       } else {
@@ -41,6 +42,7 @@ const Pagination = ({ currentPage, totalPage }) => {
       }
     }
 
+    // On every page change, go to the top of the page.
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   };

@@ -11,12 +11,17 @@ import NoResult from '../components/NoResult';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 const CharactersPage = () => {
+  // If a filter's value is false, then the button it represents will be disabled.
   const [activeFilter, setActiveFilter] = useState({
     alive: false,
     dead: false,
     unknown: false,
   });
+
+  // Incoming data could be an object, so I had to make it an array containing an object.
   const [normalizedData, setNormalizedData] = useState([]);
+
+  // We're getting locationId for fetching the data
   const { locationId } = useParams();
   const { activePage, setActivePage } = useContext(Context);
   const [filtered, setFiltered] = useState([]);
@@ -25,10 +30,12 @@ const CharactersPage = () => {
   const { data: locationData } = useFetch(
     `${import.meta.env.VITE_LOCATION_API}/${locationId}`
   );
+
   const lastIndexOfSlash = import.meta.env.VITE_CHARACTER_API.length;
   const [allIDs, setAllIDs] = useState('');
 
   useEffect(() => {
+    // This returns => '12,13,14,16,23,26,42,55,76,79,...'
     setAllIDs(
       locationData?.residents
         ?.map((character) => character.slice(lastIndexOfSlash))
@@ -37,6 +44,8 @@ const CharactersPage = () => {
   }, [locationData]);
 
   const { data: characterData, loading } = useFetch(
+    // We're getting all the character data with only one call.
+    // 'https://rickandmortyapi.com/api/character/12,13,14,16,23,26,42,55,76,79,...'
     `${import.meta.env.VITE_CHARACTER_API}${allIDs}`
   );
 
@@ -44,6 +53,7 @@ const CharactersPage = () => {
     if (allIDs?.length === 0) {
       setNormalizedData([]);
     } else if (
+      // Checking if data is an object({...}) and making it an array object ([{...}])
       !Array.isArray(characterData) &&
       typeof characterData === 'object' &&
       characterData !== null
@@ -55,6 +65,7 @@ const CharactersPage = () => {
   }, [characterData]);
 
   useEffect(() => {
+    // When a filter changes, the filtered array will be updated.
     setFiltered(
       normalizedData.filter(
         (character) =>
@@ -77,6 +88,7 @@ const CharactersPage = () => {
   }, [normalizedData]);
 
   const handleFiltering = (btn) => {
+    // To ignore the active page being stuck on an unachievable page after filtering, we're resetting it.
     setActivePage(1);
     setActiveFilter((prev) => ({
       ...prev,

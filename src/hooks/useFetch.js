@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 
+// I've created this hook to not repeat the fetching process.
+// const {data, loading} useFetch('https://example-data.draftbit.com/todo_lists?_limit=10');
+// console.log(data) => [{...},{...},{...},...]
+
 const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);

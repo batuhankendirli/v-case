@@ -12,9 +12,11 @@ import { useAutoAnimate } from '@formkit/auto-animate/react';
 import Skeleton from 'react-loading-skeleton';
 
 const CharacterDetailsPage = () => {
+  // Getting the characterId and the locationId to fetch the data that we need.
   const { characterId, locationId } = useParams();
   const lastIndexOfSlash = import.meta.env.VITE_CHARACTER_API.length;
   const [allIDs, setAllIDs] = useState('');
+  // Same normalizing as CharactersPage
   const [normalizedData, setNormalizedData] = useState([]);
   const [paginatedData, setPaginatedData] = useState([]);
   const [parent] = useAutoAnimate();

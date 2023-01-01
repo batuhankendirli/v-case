@@ -12,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <SkeletonTheme baseColor="#b7b7b7" highlightColor="#c8c8c8">
+        {/* The GoBack button will not appear if the pathname points to the home page. */}
         <Navigation goBack={pathname === '/' ? false : true} />
         <Routes>
           <Route path="/" element={<LocationPage />} />
